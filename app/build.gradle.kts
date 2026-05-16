@@ -64,5 +64,6 @@ sonarqube {
         property("sonar.projectKey", "ItxasoUrgoitia_ParkingLKSNext")
         property("sonar.organization", "itxasourgoitia")
         property("sonar.host.url", "https://sonarcloud.io")
+        property("sonar.androidVariant", "debug")
     }
 }
