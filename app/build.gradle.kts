@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    id("org.sonarqube")
 }
 
 android {
@@ -57,4 +58,11 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     implementation("androidx.navigation:navigation-compose:2.7.7")
+}
+sonarqube {
+    properties {
+        property("sonar.projectKey", "ItxasoUrgoitia_ParkingLKSNext")
+        property("sonar.organization", "itxasourgoitia")
+        property("sonar.host.url", "https://sonarcloud.io")
+    }
 }
