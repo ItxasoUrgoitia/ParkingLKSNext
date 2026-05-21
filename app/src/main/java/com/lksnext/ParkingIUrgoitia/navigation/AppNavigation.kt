@@ -11,7 +11,7 @@ import com.lksnext.ParkingIUrgoitia.screens.AddCarScreen
 import com.lksnext.ParkingIUrgoitia.screens.EditReservationScreen
 import com.lksnext.ParkingIUrgoitia.screens.ViewReservationsScreen
 import com.lksnext.ParkingIUrgoitia.screens.DeleteReservationScreen
-
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun AppNavigation() {
@@ -31,7 +31,14 @@ fun AppNavigation() {
         }
 
         composable("make_reservation") {
+            val repository = com.lksnext.ParkingIUrgoitia.data.ReservationRepositoryImpl()
+            val viewModel: com.lksnext.ParkingIUrgoitia.viewmodels.ReservationViewModel = viewModel {
+                com.lksnext.ParkingIUrgoitia.viewmodels.ReservationViewModel(repository)
+            }
+
+
             ReservationScreen(
+                viewModel = viewModel,
                 onNavigateHome = {
                     navController.popBackStack("home", inclusive = false)
                 }
