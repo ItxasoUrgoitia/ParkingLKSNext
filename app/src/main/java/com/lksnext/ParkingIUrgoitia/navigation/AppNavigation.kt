@@ -77,7 +77,16 @@ fun AppNavigation() {
         }
 
         composable("delete_reservations") {
+            // Reutilizamos el mismo repositorio
+            val repository = com.lksnext.ParkingIUrgoitia.data.ReservationRepositoryImpl()
+
+            // Creamos el ViewModel
+            val deleteViewModel: com.lksnext.ParkingIUrgoitia.viewmodels.DeleteReservationViewModel = viewModel {
+                com.lksnext.ParkingIUrgoitia.viewmodels.DeleteReservationViewModel(repository)
+            }
+
             DeleteReservationScreen(
+                viewModel = deleteViewModel,
                 onNavigateHome = {
                     navController.popBackStack("home", inclusive = false)
                 }
