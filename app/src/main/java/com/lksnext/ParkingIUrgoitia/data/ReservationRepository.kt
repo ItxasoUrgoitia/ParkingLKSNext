@@ -6,6 +6,7 @@ interface ReservationRepository {
     fun getParkingSpots(): List<ParkingSpot>
     fun addReservation(reservation: Reservation)
     fun isSpotOccupied(spot: String, date: String, startTime: String, endTime: String): Boolean
+    fun getAllReservations(): List<Reservation>
 }
 
 //Implementación del repositorio de reservas que utiliza una base de datos en memoria para almacenar las reservas y los estacionamientos.
@@ -14,6 +15,10 @@ class ReservationRepositoryImpl : ReservationRepository {
 
     override fun addReservation(reservation: Reservation) {
         MemoryDatabase.reservationsList.add(reservation)
+    }
+
+    override fun getAllReservations(): List<Reservation> {
+        return MemoryDatabase.reservationsList
     }
 
     override fun isSpotOccupied(spot: String, date: String, startTime: String, endTime: String): Boolean {

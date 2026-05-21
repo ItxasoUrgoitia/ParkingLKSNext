@@ -46,8 +46,15 @@ fun AppNavigation() {
         }
 
         composable("view_reservations") {
+            val repository = com.lksnext.ParkingIUrgoitia.data.ReservationRepositoryImpl()
+
+            // Crear el ViewModel de esta pantalla
+            val viewReservationsViewModel: com.lksnext.ParkingIUrgoitia.viewmodels.ViewReservationsViewModel = viewModel {
+                com.lksnext.ParkingIUrgoitia.viewmodels.ViewReservationsViewModel(repository)
+            }
 
             ViewReservationsScreen(
+                viewModel = viewReservationsViewModel,
                 onNavigateHome = {
                     navController.popBackStack("home", inclusive = false)
                 }
